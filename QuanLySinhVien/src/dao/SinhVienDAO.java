@@ -6,12 +6,13 @@
 package dao;
 
 import java.util.List;
-import javax.management.Query;
 import pojo.SinhVien;
 import ulti.HibernateUtil;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 /**
  *
  * @author yumil
@@ -26,16 +27,17 @@ public class SinhVienDAO {
             Query query = session.createQuery(hql);
             ds = query.list();
         } catch (HibernateException ex) {
-            //Log the exception             
+        //Log the exception 
             System.err.println(ex);
         } finally {
             session.close();
         }
         return ds;
-
     }
 
-    public static SinhVien layThongTinhSinhVien(String maSinhVien) {
+    
+
+    public static SinhVien layThongTinSinhVien(String maSinhVien) {
         SinhVien sv = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -58,16 +60,13 @@ public class SinhVienDAO {
         try {
             transaction = session.beginTransaction();
             session.save(sv);
-        }
-        transaction.commit();
-        catch (HibernateException ex) {
-        //Log the exception             
-        transaction.rollback();             
-        System.err.println(ex);
-        }
-        finally 
-        {
-        session.close();
+            transaction.commit();
+        } catch (HibernateException ex) {
+            //Log the exception 
+            transaction.rollback();
+            System.err.println(ex);
+        } finally {
+            session.close();
         }
         return true;
     }
@@ -92,5 +91,4 @@ public class SinhVienDAO {
         }
         return true;
     }
-}
 }

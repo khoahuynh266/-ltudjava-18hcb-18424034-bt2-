@@ -11,54 +11,68 @@ package pojo;
  */
 public class SinhVien implements java.io.Serializable {
 
-    private String maSinhVien;
-    private String hoVaTen;
-    private String gioiTinh;
-    private String cmnd;
-
-    public SinhVien() {
+    private String MSSV;
+    private String hoTen;
+    private int gioiTinh; 
+    private String CMND;    
+    
+    public SinhVien(){
+        this.MSSV = "";
+        this.hoTen = "";
+        this.gioiTinh = -1;
+        this.CMND = "";
     }
-
-    public SinhVien(String maSinhVien) {
-        this.maSinhVien = maSinhVien;
+    public SinhVien(String MSSV, String hoTen, String CMND){
+        this.MSSV = MSSV;
+        this.hoTen = hoTen;
+        this.CMND = CMND;
     }
-
-    public SinhVien(String maSinhVien, String hoVaTen, String gioiTinh, String cmnd) {
-        this.maSinhVien = maSinhVien;
-        this.hoVaTen = hoVaTen;
+    public SinhVien(String MSSV, String hoTen, int gioiTinh, String CMND){
+        this.MSSV = MSSV;
+        this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
-        this.cmnd = cmnd;
+        this.CMND = CMND;
     }
-
-    public String getMaSinhVien() {
-        return this.maSinhVien;
+    
+     public SinhVien(String MSSV, String hoTen){
+        this.MSSV = MSSV;
+        this.hoTen = hoTen;
+        this.gioiTinh = -1;
+        this.CMND = "";
     }
-
-    public void setMaSinhVien(String maSinhVien) {
-        this.maSinhVien = maSinhVien;
+    public String getMSSV(){
+        return this.MSSV;
     }
-
-    public String getHoVaTen() {
-        return this.hoVaTen;
+    public void setMSSV(String MSSV) {
+        this.MSSV = MSSV;
     }
-
-    public void setHoVaTen(String hoVaTen) {
-        this.hoVaTen = hoVaTen;
+    
+    
+    public String getTen(){
+        return this.hoTen;
     }
-
-    public String getNgaySinh() {
+    public void setTen(String fullname) {
+        this.hoTen = fullname;
+    }
+    
+    public int getGioiTinh(){
         return this.gioiTinh;
     }
-
-    public void setNgaySinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
+    public void setGioiTinh(int sex) {
+        this.gioiTinh = sex;
     }
-
-    public String getDiaChi() {
-        return this.cmnd;
+    
+    public String getCMND() {
+        return CMND;
     }
-
-    public void setDiaChi(String cmnd) {
-        this.cmnd = cmnd;
+    public void setCMND(String cmnd) {
+        this.CMND = cmnd;
+    }
+ public boolean isExistsSV(String mssv) {
+        boolean result = false;
+        if(this.MSSV.equalsIgnoreCase(mssv)) {
+            result = true;
+        }
+        return result;
     }
 }
