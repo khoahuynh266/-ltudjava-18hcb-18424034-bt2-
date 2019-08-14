@@ -12,7 +12,7 @@
        <property name="gioiTinh" type="int">        
            <column length="10"name="GioiTinh"/>       
        </property>       
-       <property name="cmnd" type="string">          
+       <property name="CMND" type="string">          
            <column length="45" name="CMND"/>       
        </property>    
    </class> 

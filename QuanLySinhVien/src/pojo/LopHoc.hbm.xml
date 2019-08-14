@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Aug 12, 2019 10:15:23 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
    <class catalog="quanlysinhvien" name="pojo.LopHoc" table="lophoc"  optimistic-lock="version">
         <id name="tenLop" type="string">
@@ -12,7 +11,7 @@
             <key>
                 <column length="10" name="TenLop" not-null="true"></column>
             </key>
-            <one-to-many class="pojos.Student"></one-to-many>
+            <one-to-many class="pojos.SinhVien></one-to-many>
        </set>
     </class>
 </hibernate-mapping>

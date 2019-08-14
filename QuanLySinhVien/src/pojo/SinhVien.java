@@ -11,40 +11,40 @@ package pojo;
  */
 public class SinhVien implements java.io.Serializable {
 
-    private String MSSV;
+    private String maSinhVien;
     private String hoTen;
     private int gioiTinh; 
     private String CMND;    
     
     public SinhVien(){
-        this.MSSV = "";
+        this.maSinhVien = "";
         this.hoTen = "";
         this.gioiTinh = -1;
         this.CMND = "";
     }
-    public SinhVien(String MSSV, String hoTen, String CMND){
-        this.MSSV = MSSV;
+    public SinhVien(String maSinhVien, String hoTen, String CMND){
+        this.maSinhVien = maSinhVien;
         this.hoTen = hoTen;
         this.CMND = CMND;
     }
-    public SinhVien(String MSSV, String hoTen, int gioiTinh, String CMND){
-        this.MSSV = MSSV;
+    public SinhVien(String maSinhVien, String hoTen, int gioiTinh, String CMND){
+        this.maSinhVien = maSinhVien;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.CMND = CMND;
     }
     
-     public SinhVien(String MSSV, String hoTen){
-        this.MSSV = MSSV;
+     public SinhVien(String maSinhVien, String hoTen){
+        this.maSinhVien = maSinhVien;
         this.hoTen = hoTen;
         this.gioiTinh = -1;
         this.CMND = "";
     }
-    public String getMSSV(){
-        return this.MSSV;
+    public String getmaSinhVien(){
+        return this.maSinhVien;
     }
-    public void setMSSV(String MSSV) {
-        this.MSSV = MSSV;
+    public void setmaSinhVien(String maSinhVien) {
+        this.maSinhVien = maSinhVien;
     }
     
     
@@ -70,7 +70,7 @@ public class SinhVien implements java.io.Serializable {
     }
  public boolean isExistsSV(String mssv) {
         boolean result = false;
-        if(this.MSSV.equalsIgnoreCase(mssv)) {
+        if(this.maSinhVien.equalsIgnoreCase(mssv)) {
             result = true;
         }
         return result;

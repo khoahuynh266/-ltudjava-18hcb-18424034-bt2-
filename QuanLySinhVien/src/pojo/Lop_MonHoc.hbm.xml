@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojos.Lop_MonHoc" table="lop_monhoc" catalog="quanlysinhvien" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="maLop" type="string">
+            <column name="MaLop" length="10" not-null="true" />
+        </property>
+        <property name="maMonHoc" type="string">
+            <column name="maMonHoc" length="10" not-null="true" />
+        </property>
+        <property name="maSinhVien" type="string">
+            <column name="MaStudent" length="10" not-null="true" />
+        </property>
+        <property name="idTKBMonHoc" type="int">
+            <column name="IDTKBMonHoc" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

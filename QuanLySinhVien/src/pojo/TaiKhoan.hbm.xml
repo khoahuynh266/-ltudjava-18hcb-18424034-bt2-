@@ -10,7 +10,7 @@ Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/dtd/hibernate-mapping-3.0
             <column length="50" name="MatKhau"/>
         </property>
         <property name="tenLop" type="string">        
-           <column length="10"name="TenLop  "/>       
+           <column length="50"name="TenLop  "/>       
        </property>       
        <property name="per" type="int">          
            <column length="45" name="Per"/>       
