@@ -11,47 +11,47 @@ package pojo;
  */
 public class SinhVien implements java.io.Serializable {
 
-    private String maSinhVien;
+    private String mSSV;
     private String hoTen;
     private int gioiTinh; 
     private String CMND;    
     
     public SinhVien(){
-        this.maSinhVien = "";
+        this.mSSV = "";
         this.hoTen = "";
         this.gioiTinh = -1;
         this.CMND = "";
     }
-    public SinhVien(String maSinhVien, String hoTen, String CMND){
-        this.maSinhVien = maSinhVien;
+    public SinhVien(String mSSV, String hoTen, String CMND){
+        this.mSSV = mSSV;
         this.hoTen = hoTen;
         this.CMND = CMND;
     }
-    public SinhVien(String maSinhVien, String hoTen, int gioiTinh, String CMND){
-        this.maSinhVien = maSinhVien;
+    public SinhVien(String mSSV, String hoTen, int gioiTinh, String CMND){
+        this.mSSV = mSSV;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.CMND = CMND;
     }
     
-     public SinhVien(String maSinhVien, String hoTen){
-        this.maSinhVien = maSinhVien;
+     public SinhVien(String mSSV, String hoTen){
+        this.mSSV = mSSV;
         this.hoTen = hoTen;
         this.gioiTinh = -1;
         this.CMND = "";
     }
-    public String getmaSinhVien(){
-        return this.maSinhVien;
+    public String getMSSV(){
+        return this.mSSV;
     }
-    public void setmaSinhVien(String maSinhVien) {
-        this.maSinhVien = maSinhVien;
+    public void setMSSV(String mSSV) {
+        this.mSSV = mSSV;
     }
     
     
-    public String getTen(){
+    public String getHoTen(){
         return this.hoTen;
     }
-    public void setTen(String fullname) {
+    public void setHoTen(String fullname) {
         this.hoTen = fullname;
     }
     
@@ -70,7 +70,7 @@ public class SinhVien implements java.io.Serializable {
     }
  public boolean isExistsSV(String mssv) {
         boolean result = false;
-        if(this.maSinhVien.equalsIgnoreCase(mssv)) {
+        if(this.mSSV.equalsIgnoreCase(mssv)) {
             result = true;
         }
         return result;
