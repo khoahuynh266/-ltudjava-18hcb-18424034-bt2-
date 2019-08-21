@@ -52,7 +52,6 @@ public class LopHocDAO {
         } finally {
             session.close();
         }
-
         return listThoiKhoaBieu;
     }
 
