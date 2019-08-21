@@ -12,22 +12,14 @@ package pojo;
 public class TaiKhoan implements java.io.Serializable {
     private String tenTaiKhoan;
     private String matKhau;
-    private String tenLop;
     private int per; // 1 la giao vu 0 la sv
     
     public TaiKhoan(){
         this.tenTaiKhoan = "";
         this.matKhau = "";
-        this.tenLop = "";
         this.per = -1; 
     }
     
-    public TaiKhoan(String tenTaiKhoan, String pass, String lop, int per){
-        this.tenTaiKhoan = tenTaiKhoan;
-        this.matKhau = pass;
-        this.tenLop = lop;
-        this.per = per;
-    }
     
     public TaiKhoan(String tenTaiKhoan, String mk, int per) {
         this.tenTaiKhoan = tenTaiKhoan;
@@ -51,20 +43,12 @@ public class TaiKhoan implements java.io.Serializable {
         this.matKhau = mk;
     }
 
-    public int getQuyen() {
-        return per;
+    public int getPer() {
+        return this.per;
     }
 
-    public void setQuyen(int per) {
+    public void setPer(int per) {
         this.per = per;
-    }
-
-    public String getTenLop() {
-        return tenLop;
-    }
-
-    public void setTenLop(String tenLop) {
-        this.tenLop = tenLop;
     }
 
     public boolean checkTaiKhoan(String tenTaiKhoan) {
