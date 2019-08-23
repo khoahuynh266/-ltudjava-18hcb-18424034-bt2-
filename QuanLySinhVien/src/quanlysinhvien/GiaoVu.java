@@ -5,6 +5,7 @@
  */
 package quanlysinhvien;
 
+import dao.TaiKhoanDAO;
 import javax.swing.JOptionPane;
 import pojo.*;
 import static quanlysinhvien.Login.taiKhoan;
@@ -47,12 +48,12 @@ public class GiaoVu extends javax.swing.JFrame {
         btnSaveNewPass = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         textMKMoi = new javax.swing.JTextField();
-        jbtnThoat = new javax.swing.JButton();
-        jbtnThoat1 = new javax.swing.JButton();
+        jBtnDangXuat = new javax.swing.JButton();
+        jbtnDoiMK = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBtnQLTKB = new javax.swing.JButton();
+        jBtnQLLH = new javax.swing.JButton();
+        jBtnMonHoc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,41 +137,41 @@ public class GiaoVu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jbtnThoat.setText("Đăng xuất");
-        jbtnThoat.addActionListener(new java.awt.event.ActionListener() {
+        jBtnDangXuat.setText("Đăng xuất");
+        jBtnDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnThoatActionPerformed(evt);
+                jBtnDangXuatActionPerformed(evt);
             }
         });
 
-        jbtnThoat1.setText("Đổi Mật Khẩu");
-        jbtnThoat1.addActionListener(new java.awt.event.ActionListener() {
+        jbtnDoiMK.setText("Đổi Mật Khẩu");
+        jbtnDoiMK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnThoat1ActionPerformed(evt);
+                jbtnDoiMKActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Quản Lý TKB");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBtnQLTKB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBtnQLTKB.setText("Quản Lý TKB");
+        jBtnQLTKB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBtnQLTKBActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Quản Lý Lớp Học");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBtnQLLH.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBtnQLLH.setText("Quản Lý Lớp Học");
+        jBtnQLLH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBtnQLLHActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("DS Lớp theo Môn");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBtnMonHoc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBtnMonHoc.setText("DS Lớp theo Môn");
+        jBtnMonHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBtnMonHocActionPerformed(evt);
             }
         });
 
@@ -181,20 +182,20 @@ public class GiaoVu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE))
+                    .addComponent(jBtnMonHoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnQLTKB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnQLLH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnQLTKB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnQLLH, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -215,8 +216,8 @@ public class GiaoVu extends javax.swing.JFrame {
                                 .addGap(167, 167, 167)))
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jbtnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtnThoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jBtnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 9, Short.MAX_VALUE)
@@ -229,9 +230,9 @@ public class GiaoVu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jbtnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBtnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtnThoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbtnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,23 +246,23 @@ public class GiaoVu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBtnQLLHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnQLLHActionPerformed
         // TODO add your handling code here:
         new QuanLyLopHoc().setVisible(true);
          this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBtnQLLHActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBtnQLTKBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnQLTKBActionPerformed
         // TODO add your handling code here:
      //      new QuanLyTKB().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBtnQLTKBActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBtnMonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMonHocActionPerformed
         // TODO add your handling code here:
     //     new QuanLyMonHoc().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBtnMonHocActionPerformed
 
       private boolean kiemTraDoiMK(){
         boolean flag = false;
@@ -289,30 +290,29 @@ public class GiaoVu extends javax.swing.JFrame {
         // TODO add your handling code here:
         boolean checked = kiemTraDoiMK();
         if(!checked){
-            String username = taiKhoan.getTenTaiKhoan();
-            String password = taiKhoan.getMatKhau();
-
-            for(TaiKhoan i : th.getListTaiKhoan()){
-                if(i.getTenTaiKhoan().equals(username) && i.getMatKhau().equals(password)){
-                    taiKhoan.setMatKhau(textMKMoi.getText());
-                    th.getListTaiKhoan().set(th.getListTaiKhoan().indexOf(i), i);
-                    break;
-                }
-            }
+             TaiKhoan tk = taiKhoan;
+            tk.setMatKhau(textMKMoi.getText());
+            boolean updateTaiKhoan = TaiKhoanDAO.updateTaiKhoan(tk);
+            if (updateTaiKhoan == true) {
+                JOptionPane.showMessageDialog(null, "Đổi mật khẩu thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                taiKhoan = null;
+                this.login.setVisible(true);
+                this.dispose();
             JOptionPane.showMessageDialog(null, "Đổi mật khẩu thành công.", "Notify", JOptionPane.INFORMATION_MESSAGE);
+        }
         }
     }//GEN-LAST:event_btnSaveNewPassActionPerformed
 
-    private void jbtnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnThoatActionPerformed
+    private void jBtnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDangXuatActionPerformed
         // TODO add your handling code here:
         this.dispose();
         new Login().setVisible(true);
-    }//GEN-LAST:event_jbtnThoatActionPerformed
+    }//GEN-LAST:event_jBtnDangXuatActionPerformed
 
-    private void jbtnThoat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnThoat1ActionPerformed
+    private void jbtnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDoiMKActionPerformed
         // TODO add your handling code here:
            panelDoiMK.setVisible(true);
-    }//GEN-LAST:event_jbtnThoat1ActionPerformed
+    }//GEN-LAST:event_jbtnDoiMKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,17 +351,17 @@ public class GiaoVu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSaveNewPass;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBtnDangXuat;
+    private javax.swing.JButton jBtnMonHoc;
+    private javax.swing.JButton jBtnQLLH;
+    private javax.swing.JButton jBtnQLTKB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jbtnThoat;
-    private javax.swing.JButton jbtnThoat1;
+    private javax.swing.JButton jbtnDoiMK;
     private javax.swing.JPanel panelDoiMK;
     private javax.swing.JTextField textAgain;
     private javax.swing.JTextField textMKCu;

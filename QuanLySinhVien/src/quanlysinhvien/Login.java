@@ -9,12 +9,15 @@ import dao.TaiKhoanDAO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import pojo.*;
+
 /**
  *
  * @author yumil
  */
 public class Login extends javax.swing.JFrame {
-static TaiKhoan taiKhoan = new TaiKhoan();
+
+    static TaiKhoan taiKhoan = new TaiKhoan();
+
     /**
      * Creates new form Login
      */
@@ -32,7 +35,7 @@ static TaiKhoan taiKhoan = new TaiKhoan();
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBtnCancel = new javax.swing.JButton();
         jTextTenTK = new javax.swing.JTextField();
         jTextMatKhau = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -50,10 +53,10 @@ static TaiKhoan taiKhoan = new TaiKhoan();
             }
         });
 
-        jButton2.setText("Cancel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBtnCancel.setText("Cancel");
+        jBtnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBtnCancelActionPerformed(evt);
             }
         });
 
@@ -88,7 +91,7 @@ static TaiKhoan taiKhoan = new TaiKhoan();
                 .addGap(75, 75, 75)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69))
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
@@ -121,7 +124,7 @@ static TaiKhoan taiKhoan = new TaiKhoan();
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBtnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -134,7 +137,7 @@ static TaiKhoan taiKhoan = new TaiKhoan();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-      boolean check = checkForm();
+        boolean check = checkForm();
         if (!check) {
             jTextTenTK.setText("");
             jTextMatKhau.setText("");
@@ -149,10 +152,10 @@ static TaiKhoan taiKhoan = new TaiKhoan();
 
             }
         }
-       
-    }                                        
 
-        private boolean checkForm() {
+    }
+
+    private boolean checkForm() {
         boolean check = false;
         String tenTaiKhoan = jTextTenTK.getText();
         String matKhau = jTextMatKhau.getText();
@@ -163,11 +166,9 @@ static TaiKhoan taiKhoan = new TaiKhoan();
             msgErr.append("Vui lòng nhập đủ thông tin.");
             msgErr.append("\n");
         }
-
         if (check == false) {
             TaiKhoan a = TaiKhoanDAO.getTaiKhoan(tenTaiKhoan);
-           System.out.print(tenTaiKhoan);
-           
+            System.out.print(tenTaiKhoan);
             if (a.getTenTaiKhoan().equals(tenTaiKhoan) && a.getMatKhau().equals(matKhau)) {
                 taiKhoan = a;
                 check = false;
@@ -175,7 +176,6 @@ static TaiKhoan taiKhoan = new TaiKhoan();
                 check = true;
             }
         }
-
         if (check == true) {
             msgErr.append("Tên đăng nhập hoặc mật khẩu chưa đúng.");
             msgErr.append("\n");
@@ -183,13 +183,13 @@ static TaiKhoan taiKhoan = new TaiKhoan();
         }
 
         return check;
-    
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBtnCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,8 +227,8 @@ static TaiKhoan taiKhoan = new TaiKhoan();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnCancel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
