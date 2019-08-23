@@ -254,13 +254,13 @@ public class GiaoVu extends javax.swing.JFrame {
 
     private void jBtnQLTKBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnQLTKBActionPerformed
         // TODO add your handling code here:
-     //      new QuanLyTKB().setVisible(true);
+          new QuanLyTKB().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBtnQLTKBActionPerformed
 
     private void jBtnMonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMonHocActionPerformed
         // TODO add your handling code here:
-    //     new QuanLyMonHoc().setVisible(true);
+       new QuanLyMonHoc().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBtnMonHocActionPerformed
 

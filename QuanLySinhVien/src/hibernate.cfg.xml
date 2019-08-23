@@ -13,5 +13,8 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">123</property>
     <mapping resource="pojo/TaiKhoan.hbm.xml"/>
+    <mapping resource="pojo/SinhVien.hbm.xml"/>
+    <mapping resource="pojo/LopHoc.hbm.xml"/>
+    <mapping resource="pojo/ThoiKhoaBieu.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

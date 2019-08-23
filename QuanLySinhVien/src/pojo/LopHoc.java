@@ -17,7 +17,7 @@ import java.util.Set;
 public class LopHoc  implements java.io.Serializable {
     private String tenLop;
     private Set<SinhVien> listSinhVien = new HashSet<SinhVien>(0);
-    private ArrayList<ThoiKhoaBieu> listCourse = new ArrayList<ThoiKhoaBieu>();
+    private ArrayList<ThoiKhoaBieu> listThoiKhoaBieu = new ArrayList<ThoiKhoaBieu>();
     public LopHoc() {
     }
 
@@ -41,12 +41,14 @@ public class LopHoc  implements java.io.Serializable {
         this.listSinhVien = listSinhVien;
     }
 
-    public ArrayList<ThoiKhoaBieu> getListCourse() {
-        return listCourse;
+    public ArrayList<ThoiKhoaBieu> getListThoiKhoaBieu() {
+        return listThoiKhoaBieu;
     }
 
-    public void setListCourse(ArrayList<ThoiKhoaBieu> listCourse) {
-        this.listCourse = listCourse;
+    public void setListThoiKhoaBieu(ArrayList<ThoiKhoaBieu> listThoiKhoaBieu) {
+        this.listThoiKhoaBieu = listThoiKhoaBieu;
     }
+
+    
     
 }

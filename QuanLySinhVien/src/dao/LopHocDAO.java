@@ -47,6 +47,7 @@ public class LopHocDAO {
             Query query = session.createQuery(hql);
             query.setParameter("tenLop", tenLop);
             listThoiKhoaBieu = (ArrayList<ThoiKhoaBieu>) query.list();
+            System.out.print("get list tkb ok");
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {

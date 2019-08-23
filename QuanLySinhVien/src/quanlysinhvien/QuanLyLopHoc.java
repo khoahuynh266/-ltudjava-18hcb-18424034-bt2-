@@ -295,13 +295,13 @@ public class QuanLyLopHoc extends javax.swing.JFrame {
 
     private void btnQLTKBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLTKBActionPerformed
         // TODO add your handling code here:
-        //    new QuanLyTKB().setVisible(true);
+           new QuanLyTKB().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnQLTKBActionPerformed
 
     private void btnQLMHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLMHActionPerformed
         // TODO add your handling code here:
-        //   new QuanLyMonHoc().setVisible(true);
+           new QuanLyMonHoc().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnQLMHActionPerformed
     private void importExportFile(String title, int key) {
@@ -333,29 +333,13 @@ public class QuanLyLopHoc extends javax.swing.JFrame {
     private void addDataForComboBoxClass() {
         List<LopHoc> listLopHoc = LopHocDAO.getListLopHoc();
         if (listLopHoc.size() > 0) {
-            int stt = 1;
-            DefaultTableModel tableModel = new DefaultTableModel();
             DefaultComboBoxModel comboboxModel = new DefaultComboBoxModel();
-            tableModel.setColumnIdentifiers(columName);
             for (LopHoc lh : listLopHoc) {
-                String[] rows = new String[3];
-                rows[0] = String.valueOf(stt);
-                rows[1] = lh.getTenLop();
-                LopHoc _lh = LopHocDAO.getLopHoc(lh.getTenLop());
-                rows[2] = String.valueOf(_lh.getListSinhVien().size());
-
-                LopHocDAO.updateLopHoc(lh);
-                tableModel.addRow(rows);
                 comboboxModel.addElement(lh.getTenLop());
-                stt++;
             }
-
-            jsvTable.setModel(tableModel);
             jcbLopHoc.setModel(comboboxModel);
+            addDataForTableListSV();
         } else {
-            DefaultTableModel tableModel = new DefaultTableModel();
-            tableModel.setColumnIdentifiers(columName);
-            jsvTable.setModel(tableModel);
             jcbLopHoc.setModel(new javax.swing.DefaultComboBoxModel(new String[]{}));
         }
     }
