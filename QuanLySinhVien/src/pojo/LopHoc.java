@@ -6,58 +6,47 @@
 package pojo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
  * @author yumil
  */
-public class LopHoc implements java.io.Serializable {
+
+public class LopHoc  implements java.io.Serializable {
     private String tenLop;
-    private ArrayList<SinhVien> listSinhVien = new ArrayList<SinhVien>();
-    private ArrayList<ThoiKhoaBieu> tkb = new ArrayList<ThoiKhoaBieu>();
-    
-    public LopHoc(){
-        this.tenLop = "";
+    private Set<SinhVien> listSinhVien = new HashSet<SinhVien>(0);
+    private ArrayList<ThoiKhoaBieu> listCourse = new ArrayList<ThoiKhoaBieu>();
+    public LopHoc() {
     }
-    
-    public String getTenLop(){
+
+    public LopHoc(String tenLop) {
+       this.tenLop = tenLop;
+    }
+   
+    public String getTenLop() {
         return this.tenLop;
     }
-    public void setTenLop(String className){
-        this.tenLop = className;
-    }
     
-    public void themSinhVien(SinhVien sv){
-        listSinhVien.add(sv);
+    public void setTenLop(String tenLop) {
+        this.tenLop = tenLop;
     }
-    public ArrayList<SinhVien> getListSinhVien(){
+
+    public Set<SinhVien> getListSinhVien() {
         return listSinhVien;
     }
-    
-    public boolean kiemTraTenLop(String name){
-        if(this.tenLop.equalsIgnoreCase(name))
-            return true;
-        return false;
+
+    public void setListSinhVien(Set<SinhVien> listSinhVien) {
+        this.listSinhVien = listSinhVien;
     }
-    public ArrayList<ThoiKhoaBieu> getTKB(){
-        return this.tkb;
+
+    public ArrayList<ThoiKhoaBieu> getListCourse() {
+        return listCourse;
     }
-    
-    public void setTKB(ArrayList<ThoiKhoaBieu> listTKB){
-        this.tkb = listTKB;
-    }
-    
-    public void themTKB(ThoiKhoaBieu tkb){
-        this.tkb.add(tkb);
+
+    public void setListCourse(ArrayList<ThoiKhoaBieu> listCourse) {
+        this.listCourse = listCourse;
     }
     
-    public SinhVien getSinhVien(String mssv) {
-        SinhVien sv = null;
-        for(SinhVien item : this.listSinhVien) {
-            if(item.isExistsSV(mssv)) {
-                sv = item;
-            }
-        }
-        return sv;
-    }
 }

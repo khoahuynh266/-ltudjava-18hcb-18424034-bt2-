@@ -19,11 +19,27 @@ import org.hibernate.Transaction;
  */
 public class SinhVienDAO {
 
+    public static List<SinhVien> layDanhSachSinhVien(String tenLop) {
+        List<SinhVien> ds = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+        String hql = "select sv from SinhVien sv where sv.TenLop =:tenLop";
+            Query query = session.createQuery(hql);
+            ds = query.list();
+        } catch (HibernateException ex) {
+        //Log the exception 
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return ds;
+    }
+
     public static List<SinhVien> layDanhSachSinhVien() {
         List<SinhVien> ds = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            String hql = "select sv from SinhVien sv";
+            String hql = "select sv from SinhVien sv ";
             Query query = session.createQuery(hql);
             ds = query.list();
         } catch (HibernateException ex) {
@@ -61,6 +77,7 @@ public class SinhVienDAO {
             transaction = session.beginTransaction();
             session.save(sv);
             transaction.commit();
+             System.out.print("them sv ok");
         } catch (HibernateException ex) {
             //Log the exception 
             transaction.rollback();

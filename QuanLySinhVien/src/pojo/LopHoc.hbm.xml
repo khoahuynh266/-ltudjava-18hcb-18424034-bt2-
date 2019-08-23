@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-   <class catalog="quanlysinhvien" name="pojo.LopHoc" table="lophoc"  optimistic-lock="version">
+   <class name="pojo.LopHoc" table="lophoc" catalog="quanlysinhvien" optimistic-lock="version">
         <id name="tenLop" type="string">
             <column name="TenLop" length="10" />
             <generator class="assigned" />
@@ -11,7 +11,7 @@
             <key>
                 <column length="10" name="TenLop" not-null="true"></column>
             </key>
-            <one-to-many class="pojos.SinhVien></one-to-many>
+            <one-to-many class="pojo.SinhVien"></one-to-many>
        </set>
     </class>
 </hibernate-mapping>

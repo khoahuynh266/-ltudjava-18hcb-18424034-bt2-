@@ -15,6 +15,7 @@ public class SinhVien implements java.io.Serializable {
     private String hoTen;
     private int gioiTinh; 
     private String CMND;    
+    private LopHoc lopHoc;
     
     public SinhVien(){
         this.mSSV = "";
@@ -32,6 +33,14 @@ public class SinhVien implements java.io.Serializable {
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.CMND = CMND;
+    }
+    
+     public SinhVien(String mSSV, String hoTen, int gioiTinh, String CMND, LopHoc lopHoc){
+        this.mSSV = mSSV;
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.CMND = CMND;
+        this.lopHoc = lopHoc;
     }
     
      public SinhVien(String mSSV, String hoTen){
@@ -67,6 +76,12 @@ public class SinhVien implements java.io.Serializable {
     }
     public void setCMND(String cmnd) {
         this.CMND = cmnd;
+    }
+        public LopHoc getLopHoc() {
+        return this.lopHoc;
+    }
+    public void setLopHoc(LopHoc lopHoc) {
+        this.lopHoc = lopHoc;
     }
  public boolean isExistsSV(String mssv) {
         boolean result = false;

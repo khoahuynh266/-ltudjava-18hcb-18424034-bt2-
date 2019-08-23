@@ -21,7 +21,8 @@ import ulti.HibernateUtil;
  * @author yumil
  */
 public class LopHocDAO {
-     public static List<LopHoc> getListLopHoc() {
+   
+      public static List<LopHoc> getListLopHoc() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<LopHoc> listLopHoc = null;
         try {
@@ -33,7 +34,6 @@ public class LopHocDAO {
         } finally {
             session.close();
         }
-
         return listLopHoc;
     }
     
@@ -60,6 +60,7 @@ public class LopHocDAO {
         LopHoc lh = null;
         try {
             lh = (LopHoc) session.get(LopHoc.class, tenLop);
+           
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {
@@ -78,6 +79,26 @@ public class LopHocDAO {
             transaction = session.beginTransaction();
             session.save(lh);
             transaction.commit();
+            System.out.print("ok\n");
+        } catch(HibernateException ex) {
+            transaction.rollback();
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return true;
+    }
+    public static boolean updateLopHoc(LopHoc lh) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        if(LopHocDAO.getLopHoc(lh.getTenLop()) != null) {
+            return false;
+        }
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.update(lh);
+            transaction.commit();
+            System.out.print(" update LH ok\n");
         } catch(HibernateException ex) {
             transaction.rollback();
             System.err.println(ex);

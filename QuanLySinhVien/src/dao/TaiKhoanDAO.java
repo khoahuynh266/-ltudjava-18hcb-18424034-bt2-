@@ -53,5 +53,24 @@ public class TaiKhoanDAO {
         }
         return true;
     }
+     public static boolean themTaiKhoan(TaiKhoan a) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        if(TaiKhoanDAO.getTaiKhoan(a.getTenTaiKhoan()) == null) {
+            return false;
+        }
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.save(a);
+            transaction.commit();
+        } catch(HibernateException ex) {
+            //Log the exception  
+            transaction.rollback();
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return true;
+    }
 }
 
