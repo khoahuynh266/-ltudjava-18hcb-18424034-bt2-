@@ -6,6 +6,7 @@
 package quanlysinhvien;
 
 import dao.LopHocDAO;
+import dao.Lop_MonHocDAO;
 import dao.ThoiKhoaBieuDAO;
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,7 +24,7 @@ import pojo.Lop_MonHoc;
 import pojo.MonHoc;
 import pojo.SinhVien;
 import pojo.ThoiKhoaBieu;
-import static quanlysinhvien.GiaoVu.th;
+//import static quanlysinhvien.GiaoVu.th;
 
 /**
  *
@@ -325,38 +326,39 @@ public class QuanLyTKB extends javax.swing.JFrame {
     }
     private void readFile(File file) {
         try {
-//            try ( FileInputStream fileInPutStream = new FileInputStream(file)) {
-//                Reader reader = new java.io.InputStreamReader(fileInPutStream, "utf8");
-//                BufferedReader buffer = new BufferedReader(reader);
-//                String line;
-//               line = buffer.readLine();
-//            String[] item = line.split("-");
-//            String tenLop = item[0].replaceAll("﻿", "");
-//            String hocKy = item[1];
-//            String namHoc = item[2];
-//
-//            System.out.println(item[0]);
-//            System.out.println(item[1]);
-//            System.out.println(item[2]);
-//
-//            while ((line = buffer.readLine()) != null) {
-//                String[] tkb = line.split(",");
-//
-//                ThoiKhoaBieu thoiKhoaBieu = new ThoiKhoaBieu(tkb[0], tkb[1], tenLop, tkb[2], hocKy, namHoc);
-//                // Thêm danh sách sv của lớp vào bảng Lop_MonHoc
-//                if (ThoiKhoaBieuDAO.createThoiKhoaBieu(thoiKhoaBieu)) {
-//                    ThoiKhoaBieu tkbDao = ThoiKhoaBieuDAO.getThoiKhoaBieu(tenLop, tkb[0]);
-//                    LopHoc lh = LopHocDAO.getLopHoc(tenLop);
-//                    for (SinhVien sv : lh.getListSinhVien()) {
-//                        Lop_MonHoc lop_MH = new Lop_MonHoc(tkbDao.getId(), sv.getMSSV());
-//                        Lop_MonHocDAO.addSinhVienInCourse(_crc);
-//                    }
-//                }
-//            }
-//            buffer.close();
+            try ( FileInputStream fileInPutStream = new FileInputStream(file)) {
+                Reader reader = new java.io.InputStreamReader(fileInPutStream, "utf8");
+                BufferedReader buffer = new BufferedReader(reader);
+                String line;
+               line = buffer.readLine();
+            String[] item = line.split("-");
+            String tenLop = item[0].replaceAll("﻿", "");
+            String hocKy = item[1];
+            String namHoc = item[2];
 
-//            initLayout();
-//            }
+            System.out.println(item[0]);
+            System.out.println(item[1]);
+            System.out.println(item[2]);
+
+            while ((line = buffer.readLine()) != null) {
+                String[] tkb = line.split(",");
+
+                ThoiKhoaBieu thoiKhoaBieu = new ThoiKhoaBieu(tkb[0], tkb[1], tenLop, tkb[2], hocKy, namHoc);
+                // Thêm danh sách sv của lớp vào bảng Lop_MonHoc
+                if (ThoiKhoaBieuDAO.createThoiKhoaBieu(thoiKhoaBieu)) {
+                    ThoiKhoaBieu tkbDao = ThoiKhoaBieuDAO.getThoiKhoaBieu(tenLop, tkb[0]);
+                    LopHoc lh = LopHocDAO.getLopHoc(tenLop);
+                    String tenLopMH = tenLop +"-"+ tkb[0];
+                    for (SinhVien sv : lh.getListSinhVien()) {
+                        Lop_MonHoc lop_MH = new Lop_MonHoc(tenLopMH, sv.getMSSV());
+                        Lop_MonHocDAO.addSinhVien(lop_MH);
+                    }
+                }
+            }
+            buffer.close();
+
+            initLayout();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error to open file: " + e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
         }
