@@ -349,6 +349,7 @@ public class QuanLyTKB extends javax.swing.JFrame {
                     ThoiKhoaBieu tkbDao = ThoiKhoaBieuDAO.getThoiKhoaBieu(tenLop, tkb[0]);
                     LopHoc lh = LopHocDAO.getLopHoc(tenLop);
                     String tenLopMH = tenLop +"-"+ tkb[0];
+                    System.out.print(tenLopMH);
                     for (SinhVien sv : lh.getListSinhVien()) {
                         Lop_MonHoc lop_MH = new Lop_MonHoc(tenLopMH, sv.getMSSV());
                         Lop_MonHocDAO.addSinhVien(lop_MH);

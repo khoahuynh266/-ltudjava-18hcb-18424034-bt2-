@@ -26,6 +26,7 @@ public class ThoiKhoaBieuDAO {
             transaction = session.beginTransaction();
             session.saveOrUpdate(tkb);
             transaction.commit();
+            System.out.printf("add tkb ok \n");
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {
@@ -63,7 +64,7 @@ public class ThoiKhoaBieuDAO {
     public static List<ThoiKhoaBieu> getListThoiKhoaBieu(String tenLop) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<ThoiKhoaBieu> result = null;
-        
+       
         try {
             String hql = "select tkb from ThoiKhoaBieu tkb";
             hql += " where tkb.tenLop=:tenLop";
@@ -77,5 +78,20 @@ public class ThoiKhoaBieuDAO {
         }
         
         return result;
+    }
+    
+    public static List<ThoiKhoaBieu> getListThoiKhoaBieu() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<ThoiKhoaBieu> listLopHoc = null;
+        try {
+            String hql = "select tkb from ThoiKhoaBieu tkb";
+            Query query = session.createQuery(hql);
+            listLopHoc = query.list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return listLopHoc;
     }
 }

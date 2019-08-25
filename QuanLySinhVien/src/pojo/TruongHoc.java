@@ -35,10 +35,10 @@ public class TruongHoc implements java.io.Serializable {
     }
     
     public void themSv_Lop(String lopHoc, SinhVien sv) {
-        for(LopHoc lh : listLopHoc){
-            if(lh.kiemTraTenLop(lopHoc))
-                lh.themSinhVien(sv);
-        }        
+//        for(LopHoc lh : listLopHoc){
+//            if(lh.kiemTraTenLop(lopHoc))
+//                lh.themSinhVien(sv);
+//        }        
     }
     
     public ArrayList<LopHoc> getList(){
@@ -56,10 +56,10 @@ public class TruongHoc implements java.io.Serializable {
         LopHoc rs = new LopHoc();
         if(!tenLop.equals("")){
             for(LopHoc lh : this.listLopHoc){
-                boolean checkName = lh.kiemTraTenLop(tenLop);
-                if (checkName) {
-                    rs = lh;
-                }
+     //           boolean checkName = lh.kiemTraTenLop(tenLop);
+         //       if (checkName) {
+           //         rs = lh;
+           //     }
             }
         }
         return rs;
@@ -67,7 +67,8 @@ public class TruongHoc implements java.io.Serializable {
     
     public void setLopHoc(LopHoc lh, String tenLop) {
         for (LopHoc l : this.listLopHoc) {
-            if (l.kiemTraTenLop(tenLop)) {
+          //  if (l.kiemTraTenLop(tenLop)) 
+          {
                 int _index = this.listLopHoc.indexOf(l);
                 this.listLopHoc.set(_index, lh);
             }
@@ -96,8 +97,8 @@ public class TruongHoc implements java.io.Serializable {
         Lop_MonHoc result = new Lop_MonHoc();
         if(this.listLop_MonHoc.size() > 0){
             for(Lop_MonHoc item : this.listLop_MonHoc){
-                if(item.isExists(tenLop, maMH))
-                    result = item;
+//                if(item.isExists(tenLop, maMH))
+//                    result = item;
             }
         }
         return result;
@@ -108,8 +109,8 @@ public class TruongHoc implements java.io.Serializable {
         if(this.listLop_MonHoc.size() > 0){
             for(Lop_MonHoc item : this.listLop_MonHoc)
             {
-                if(item.isExists(tenLop_MH))
-                    result = item;
+//                if(item.isExists(tenLop_MH))
+//                    result = item;
             }
         }
         return result;
@@ -117,9 +118,9 @@ public class TruongHoc implements java.io.Serializable {
     
     public void themSV_MonHoc(String lop, String idMH ,SinhVien sv) {
         for (Lop_MonHoc lop_mh : this.listLop_MonHoc) {
-            if (lop_mh.isExists(lop)) {
-                lop_mh.themSV(sv);
-            }
+//            if (lop_mh.isExists(lop)) {
+//                lop_mh.themSV(sv);
+//            }
         }
     }
     
@@ -128,10 +129,10 @@ public class TruongHoc implements java.io.Serializable {
     }
     public void setLopMH(String tenLop ,Lop_MonHoc lh){
         for(Lop_MonHoc item : this.listLop_MonHoc){
-            if(item.isExists(tenLop)){
-                int index = this.listLop_MonHoc.indexOf(item);
-                this.listLop_MonHoc.set(index, lh);
-            }
+//            if(item.isExists(tenLop)){
+//                int index = this.listLop_MonHoc.indexOf(item);
+//                this.listLop_MonHoc.set(index, lh);
+//            }
         }
     }
     public void xoaLopMH(Lop_MonHoc lh){

@@ -9,10 +9,8 @@ import dao.LopHocDAO;
 import dao.Lop_MonHocDAO;
 import dao.SinhVienDAO;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 import pojo.LopHoc;
 import pojo.Lop_MonHoc;
 import pojo.SinhVien;
@@ -20,33 +18,30 @@ import pojo.SinhVien;
  *
  * @author yumil
  */
-public class themSinhVien extends javax.swing.JFrame {
+public class themSinhVienMonHoc extends javax.swing.JFrame {
 
     /**
-     * Creates new form themSinhVien
+     * Creates new form themSinhVienMonHoc
      */
     private LopHoc lh;
     private String tenLopHoc = "";
     private String idMonHoc = "";
     
-    public themSinhVien() {
+    public themSinhVienMonHoc() {
         initComponents();
-        checkLop();
     }
-       public themSinhVien(String lop) {
+       public themSinhVienMonHoc(String lop) {
         this.tenLopHoc = lop;
-        this.lh = LopHocDAO.getLopHoc(lop);
         initComponents();
-         checkLop();
+        addDataCombobox();
     }
-    public themSinhVien(String lop, String idMH) {
+    public themSinhVienMonHoc(String lop, String idMH) {
         this.tenLopHoc = lop;
         this.idMonHoc = idMH;
         initComponents();
-         checkLop();
+        addDataCombobox();
     }
-    
-    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,7 +58,6 @@ public class themSinhVien extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jtbMSSV = new javax.swing.JTextField();
         jtbHoTen = new javax.swing.JTextField();
         cbLop = new javax.swing.JComboBox();
         jrBtnNam = new javax.swing.JRadioButton();
@@ -71,6 +65,7 @@ public class themSinhVien extends javax.swing.JFrame {
         jtbCMND = new javax.swing.JTextField();
         jbtnThem = new javax.swing.JButton();
         jbtnThoat = new javax.swing.JButton();
+        jcbMSSV = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,13 +87,7 @@ public class themSinhVien extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("CMND");
 
-        jtbMSSV.setPreferredSize(new java.awt.Dimension(59, 30));
-        jtbMSSV.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtbMSSVKeyTyped(evt);
-            }
-        });
-
+        jtbHoTen.setActionCommand(null);
         jtbHoTen.setPreferredSize(new java.awt.Dimension(59, 30));
 
         cbLop.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--" }));
@@ -129,6 +118,13 @@ public class themSinhVien extends javax.swing.JFrame {
         jbtnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnThoatActionPerformed(evt);
+            }
+        });
+
+        jcbMSSV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--" }));
+        jcbMSSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMSSVActionPerformed(evt);
             }
         });
 
@@ -163,9 +159,8 @@ public class themSinhVien extends javax.swing.JFrame {
                                 .addGap(39, 39, 39)
                                 .addComponent(jrBtnNu))
                             .addComponent(jtbHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cbLop, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jtbMSSV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))))
+                            .addComponent(cbLop, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -175,14 +170,14 @@ public class themSinhVien extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbLop, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtbMSSV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,30 +198,11 @@ public class themSinhVien extends javax.swing.JFrame {
                 .addGap(42, 42, 42))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jtbCMND, jtbHoTen, jtbMSSV});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jtbCMND, jtbHoTen});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-  private void checkLop(){        
-       DefaultComboBoxModel model = new DefaultComboBoxModel();
-       List<LopHoc> listClass = LopHocDAO.getListLopHoc();
-        
-       if (this.idMonHoc.equals("")) {
-            model.addElement(this.tenLopHoc);
-        } else {
-            model.addElement(this.tenLopHoc + '-' + this.idMonHoc);
-        }
-        cbLop.setModel(model);
-    }
   
-    private void jtbMSSVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtbMSSVKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if(!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)){
-            evt.consume();
-        } 
-    }//GEN-LAST:event_jtbMSSVKeyTyped
-
     private void jtbCMNDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtbCMNDKeyTyped
         // TODO add your handling code here:    }     
         char c = evt.getKeyChar();
@@ -235,47 +211,53 @@ public class themSinhVien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jtbCMNDKeyTyped
 
+    private void addDataCombobox()
+    {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addElement(this.tenLopHoc);
+        cbLop.setModel(model);
+        // add data cho combobox mssv
+        List<SinhVien> listSV = SinhVienDAO.layDanhSachSinhVien();
+        DefaultComboBoxModel comboboxModel = new DefaultComboBoxModel();
+        if (listSV.size() > 0) {
+            for (SinhVien sv : listSV) {
+                String MSSV = sv.getMSSV();
+                comboboxModel.addElement(MSSV);
+            }
+            jcbMSSV.setModel(comboboxModel);
+        } else {
+            jcbMSSV.setModel(new javax.swing.DefaultComboBoxModel(new String[]{}));
+        }
+    }
     private void jbtnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnThemActionPerformed
         // TODO add your handling code here: String mssv = textMSSV.getText();
-         String mssv = jtbMSSV.getText();
-        String hoTen = jtbHoTen.getText();
-        String cmnd = jtbCMND.getText();  
-        int gt = -1;
-        if(jrBtnNam.isSelected()){
-            gt = 1;
-        } else if(jrBtnNu.isSelected()){
-            gt = 0;
-        } else { 
-            JOptionPane.showMessageDialog(null, " Vui Lòng Chọn Giới Tính!!!"); 
-        }
-        String tenLop = String.valueOf(cbLop.getItemAt(cbLop.getSelectedIndex()));
-        
-        if(mssv.equals("") || hoTen.equals("") || cmnd.equals("") || gt == -1 || cbLop.getSelectedIndex() < 0) {
-            JOptionPane.showMessageDialog(null, " Vui Lòng Kiểm Tra Lại!!!");                        
-        } 
-        else {
-          System.out.println("idMonHoc: " +idMonHoc);
-          System.out.println("tenLop: " + tenLop);
-            SinhVien sv = new SinhVien(mssv, hoTen, gt, cmnd);   
-                  sv.setLopHoc(lh);
-                  SinhVienDAO.themSinhVien(sv);
-                  LopHocDAO.updateLopHoc(lh);
-              
-            JOptionPane.showMessageDialog(null, "Thêm Sinh Viên Thành Công :)");
-            }
-       
-        jtbMSSV.setText("");
-        jtbHoTen.setText("");
-        jtbCMND.setText("");
-        jrBtnNam.setSelected(false);
-        jrBtnNu.setSelected(false);
-        
+       String mssv = jcbMSSV.getSelectedItem().toString();
+        Lop_MonHoc l = new Lop_MonHoc(tenLopHoc,mssv);
+        Lop_MonHocDAO.addSinhVien(l);
     }//GEN-LAST:event_jbtnThemActionPerformed
 
     private void jbtnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnThoatActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jbtnThoatActionPerformed
+
+    private void jcbMSSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMSSVActionPerformed
+        // TODO add your handling code here:
+        String mssv = jcbMSSV.getSelectedItem().toString();
+        SinhVien sv = SinhVienDAO.layThongTinSinhVien(mssv);
+        System.out.printf(sv.getHoTen());
+        jtbHoTen.setText(sv.getHoTen());
+        jtbCMND.setText(sv.getCMND());
+        if(sv.getGioiTinh() ==0){
+        jrBtnNam.setSelected(true);
+        jrBtnNu.setSelected(false);
+        }
+        else {
+         jrBtnNam.setSelected(false);
+        jrBtnNu.setSelected(true);
+        }   
+       
+    }//GEN-LAST:event_jcbMSSVActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -293,20 +275,20 @@ public class themSinhVien extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(themSinhVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(themSinhVienMonHoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(themSinhVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(themSinhVienMonHoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(themSinhVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(themSinhVienMonHoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(themSinhVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(themSinhVienMonHoc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new themSinhVien().setVisible(true);
+                new themSinhVienMonHoc().setVisible(true);
             }
         });
     }
@@ -321,10 +303,10 @@ public class themSinhVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JButton jbtnThem;
     private javax.swing.JButton jbtnThoat;
+    private javax.swing.JComboBox jcbMSSV;
     private javax.swing.JRadioButton jrBtnNam;
     private javax.swing.JRadioButton jrBtnNu;
     private javax.swing.JTextField jtbCMND;
     private javax.swing.JTextField jtbHoTen;
-    private javax.swing.JTextField jtbMSSV;
     // End of variables declaration//GEN-END:variables
 }
