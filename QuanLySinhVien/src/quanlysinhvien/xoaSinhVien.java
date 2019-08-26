@@ -5,12 +5,15 @@
  */
 package quanlysinhvien;
 
+import dao.Lop_MonHocDAO;
+import dao.SinhVienDAO;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import pojo.Lop_MonHoc;
 import pojo.SinhVien;
-import static quanlysinhvien.GiaoVu.th;
+//import static quanlysinhvien.GiaoVu.th;
         /**
  *
  * @author yumil
@@ -172,39 +175,40 @@ public class xoaSinhVien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
   private void checkLop(){        
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-            model.addElement(this.tenLopHoc);
+        model.addElement(this.tenLopHoc);
         cbLop.setModel(model);
         addDataForComboBoxMSSV();
   }
   private void addDataForComboBoxMSSV(){
-        Lop_MonHoc i = th.getLopMH(tenLopHoc);
-//        //System.out.printf(i.getTenLopMH() +" "+i.getMaMonHoc());
-//      //  ArrayList<SinhVien> list = i.getListSV();
-//        DefaultComboBoxModel cbModel = new DefaultComboBoxModel();
-//            
-//        for (SinhVien sv : list) {
-//            String MSSV = sv.getMSSV();
-//            cbModel.addElement(MSSV);   
-//        }   
-//         cbMSSV.setModel(cbModel);
+        String select = cbLop.getSelectedItem().toString();
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        // add data cho combobox mssv
+        List<SinhVien> listSVMH = Lop_MonHocDAO.getListSinhVien(select);
+        if(listSVMH.size() >0){   
+        for (SinhVien i : listSVMH) {
+                String MSSV = i.getMSSV();
+                model.addElement(MSSV);
+            }
+            cbMSSV.setModel(model);
+        } else {
+            cbMSSV.setModel(new javax.swing.DefaultComboBoxModel(new String[]{}));
+        }
     }
   
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here: String mssv = textMSSV.getText();
-//     
-//        String key = String.valueOf(cbMSSV.getItemAt(cbMSSV.getSelectedIndex()));
-//        Lop_MonHoc i = th.getLopMH(tenLopHoc);
-//        //System.out.print(key);
-//        ArrayList<SinhVien> list = i.getListSV();
-//         for (SinhVien sv : list) {
-//            String s = sv.getMSSV();
-//              //System.out.print(s);
-//            if(s.equalsIgnoreCase(key)){
-//            i.xoaSV(sv);  
-//              JOptionPane.showMessageDialog(null, "Xóa Sinh Viên Thành Công :)");
-//            }
-//            }
-//         this.dispose();
+     
+        String MSSV = String.valueOf(cbMSSV.getItemAt(cbMSSV.getSelectedIndex()));
+       
+        SinhVien sv = SinhVienDAO.layThongTinSinhVien(MSSV);
+        System.out.printf(sv.getHoTen());
+        
+        Lop_MonHoc l = Lop_MonHocDAO.getLop_MonHoc(this.tenLopHoc,MSSV);
+        if (l != null) {
+        Lop_MonHocDAO.deleteSinhVien(l);
+            JOptionPane.showMessageDialog(null, "Xóa Sinh Viên Thành Công :)");
+        }
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -218,17 +222,11 @@ public class xoaSinhVien extends javax.swing.JFrame {
 
     private void cbMSSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMSSVActionPerformed
         // TODO add your handling code here:
-//        String key = String.valueOf(cbMSSV.getItemAt(cbMSSV.getSelectedIndex()));
-//        Lop_MonHoc i = th.getLopMH(tenLopHoc);
-//      //  System.out.print(key);
-//        ArrayList<SinhVien> list = i.getListSV();
-//         for (SinhVien sv : list) {
-//            String s = sv.getMSSV();
-//             // System.out.print(s);
-//            if(s.equalsIgnoreCase(key)){
-//            jlableTen.setText(sv.getHoTen());
-//            }
-//         }
+        String MSSV = String.valueOf(cbMSSV.getItemAt(cbMSSV.getSelectedIndex()));
+        String LopMH = String.valueOf(cbLop.getItemAt(cbMSSV.getSelectedIndex()));
+        SinhVien sv = SinhVienDAO.layThongTinSinhVien(MSSV);
+        System.out.printf(sv.getHoTen());
+        jlableTen.setText(sv.getHoTen());
     }//GEN-LAST:event_cbMSSVActionPerformed
     /**
      * @param args the command line arguments

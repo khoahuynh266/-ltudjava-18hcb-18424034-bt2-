@@ -12,24 +12,44 @@ package pojo;
 public class Diem implements java.io.Serializable {
 
     private int id;
+    private String MSSV;
     private String tenLopMonHoc;
-    private SinhVien sinhvien;
     private float diemGK;
     private float diemCK;
     private float diemKhac;
     private float diemTong;
-    private SinhVien sv = new SinhVien();
+
+    public Diem(int id, String MSSV, String tenLopMonHoc, float diemGK, float diemCK, float diemKhac, float diemTong) {
+        this.id = id;
+        this.MSSV = MSSV;
+        this.tenLopMonHoc = tenLopMonHoc;
+        this.diemGK = diemGK;
+        this.diemCK = diemCK;
+        this.diemKhac = diemKhac;
+        this.diemTong = diemTong;
+    }
+  
+    
 
     public Diem() {
-        this.sv = null;
+        this.MSSV = null;
         this.diemGK = 0;
         this.diemCK = 0;
         this.diemKhac = 0;
         this.diemTong = 0;
     }
 
-    public Diem(SinhVien sv, float diemGK, float diemCK, float diemKhac, float diemTong) {
-        this.sv = sv;
+    public Diem(String MSSV, float diemGK, float diemCK, float diemKhac, float diemTong) {
+        this.MSSV = MSSV;
+        this.diemGK = diemGK;
+        this.diemCK = diemCK;
+        this.diemKhac = diemKhac;
+        this.diemTong = diemTong;
+    }
+
+    public Diem(String MSSV, String tenLopMonHoc, float diemGK, float diemCK, float diemKhac, float diemTong) {
+        this.MSSV = MSSV;
+        this.tenLopMonHoc = tenLopMonHoc;
         this.diemGK = diemGK;
         this.diemCK = diemCK;
         this.diemKhac = diemKhac;
@@ -50,14 +70,6 @@ public class Diem implements java.io.Serializable {
 
     public void setTenLopMonHoc(String tenLopMonHoc) {
         this.tenLopMonHoc = tenLopMonHoc;
-    }
-
-    public SinhVien getSinhvien() {
-        return sinhvien;
-    }
-
-    public void setSinhvien(SinhVien sinhvien) {
-        this.sinhvien = sinhvien;
     }
 
     public float getDiemGK() {
@@ -92,12 +104,12 @@ public class Diem implements java.io.Serializable {
         this.diemTong = diemTong;
     }
 
-    public SinhVien getSv() {
-        return sv;
+    public String getMSSV() {
+        return MSSV;
     }
 
-    public void setSv(SinhVien sv) {
-        this.sv = sv;
+    public void setMSSV(String MSSV) {
+        this.MSSV = MSSV;
     }
 
     public String xepLoai() {
@@ -106,5 +118,14 @@ public class Diem implements java.io.Serializable {
         }
         return "Đậu";
     }
+      
+    public boolean kiemTraDau() {
+        if(this.diemTong < 5) {
+            return false;
+        }
+        
+        return true;
+    }
+    
 
 }

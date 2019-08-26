@@ -5,8 +5,10 @@
  */
 package quanlysinhvien;
 
+import dao.DiemDAO;
 import dao.LopHocDAO;
 import dao.Lop_MonHocDAO;
+import dao.SinhVienDAO;
 import dao.ThoiKhoaBieuDAO;
 import java.io.BufferedReader;
 import java.io.File;
@@ -58,6 +60,7 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
         panelThongKe.setVisible(false);
         addDataForComboBoxClass();
         addDataForTableMonHoc();
+
     }
 
     /**
@@ -116,6 +119,8 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
         textKhac = new javax.swing.JTextField();
         textCK = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        textTong = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -504,6 +509,9 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
             }
         });
 
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel18.setText("Điểm Tổng:");
+
         javax.swing.GroupLayout panelUpdateLayout = new javax.swing.GroupLayout(panelUpdate);
         panelUpdate.setLayout(panelUpdateLayout);
         panelUpdateLayout.setHorizontalGroup(
@@ -524,22 +532,27 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUpdateLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(190, 190, 190))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUpdateLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textGK, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textCK, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textKhac, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUpdateLayout.createSequentialGroup()
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(151, 151, 151))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUpdateLayout.createSequentialGroup()
+                            .addComponent(jLabel18)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textTong, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(31, 31, 31))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUpdateLayout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(textGK, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textCK, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel17)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textKhac, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap()))))
         );
         panelUpdateLayout.setVerticalGroup(
             panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -562,9 +575,13 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
                         .addComponent(textCK, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel17)
                         .addComponent(textKhac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel18)
+                        .addComponent(textTong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -632,8 +649,8 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
         if (cbLop_MonHoc.getSelectedItem().toString().equals("--")) {
             JOptionPane.showMessageDialog(null, "!!! Chưa Có Danh Sách Lớp");
         } else {
-          addDataForTableMonHoc();
-          addDataForTableDiem();
+            addDataForTableMonHoc();
+            addDataForTableDiem();
         }
 
     }//GEN-LAST:event_cbLop_MonHocActionPerformed
@@ -644,7 +661,7 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
         if (cbLop_MonHoc.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "!!! Vui Lòng Chọn Môn Học");
         } else {
-           themSinhVienMonHoc svmh = new themSinhVienMonHoc(lop_MH);
+            themSinhVienMonHoc svmh = new themSinhVienMonHoc(lop_MH);
             svmh.setVisible(true);
         }
 
@@ -677,53 +694,8 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
         // TODO add your handling code here:
         addDataForTableDiem();
     }//GEN-LAST:event_jbtnXemBangDiemActionPerformed
-    private void addDataForTableDiem() {
-        jsvTableDiem.setRowSelectionAllowed(true);
-        jsvTableDiem.setEnabled(true);
 
-        DefaultTableModel table = new DefaultTableModel();
 
-        String valueComboBox = cbLop_MonHoc.getSelectedItem().toString();
-        String[] a = valueComboBox.split("-");
-
-//         Lop_MonHoc lop_MH = th.getLopMH(valueComboBox);
-        table.setColumnIdentifiers(columnNameDiem);
-
-//        ArrayList<Diem> listDiem = lop_MH.getListDiem();
-//        
-//        int stt = 1;
-//        if(listDiem.size() > 0){
-//            for(Diem item : listDiem){
-//                String[] rows = new String[8];
-//                rows[0] = String.valueOf(stt);
-//                rows[1] = item.getSV().getMSSV();
-//                rows[2] = item.getSV().getHoTen();
-//                rows[3] = String.valueOf(item.getDiemGK());
-//                rows[4] = String.valueOf(item.getDiemCK());
-//                rows[5] = String.valueOf(item.getDiemKhac());
-//                rows[6] = String.valueOf(item.getDiemTong());
-//                rows[7] = item.xepLoai();
-//
-//                table.addRow(rows);
-//                stt++;
-//            }
-//            jsvTableDiem.setModel(table);
-//            jsvTableDiem.setVisible(true);
-//            panelUpdate.setVisible(true);
-//             panelThongKe.setVisible(true);      
-//             
-//            DecimalFormat decimalFormat = new DecimalFormat("#.##");
-//           
-//            textSLPass.setText(String.valueOf(lop_MH.tongDau()));
-//            textTLPass.setText(String.valueOf(Float.valueOf(decimalFormat.format(lop_MH.tiLeDau()))));
-//            textSLFail.setText(String.valueOf(lop_MH.tongRot()));
-//            textTLFail.setText(String.valueOf(Float.valueOf(decimalFormat.format(lop_MH.tiLeRot()))));
-//        } else {
-//            jsvTableDiem.setModel(table);
-//            panelUpdate.setVisible(false);
-//             panelThongKe.setVisible(false);      
-//            JOptionPane.showMessageDialog(null, "!!! Chưa Có Bảng Điểm");
-    }
     private void textSLPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSLPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textSLPassActionPerformed
@@ -745,12 +717,12 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
             float diemGK = Float.parseFloat(textGK.getText());
             float diemCK = Float.parseFloat(textCK.getText());
             float diemKhac = Float.parseFloat(textKhac.getText());
-            float diemTong = Float.valueOf(decimalFormat.format((diemGK + diemCK + diemKhac) / 3));
+            float diemTong = Float.parseFloat(textTong.getText());;
 
             model.setValueAt(textGK.getText(), i, 3);
             model.setValueAt(textCK.getText(), i, 4);
             model.setValueAt(textKhac.getText(), i, 5);
-            model.setValueAt(diemTong, i, 6);
+            model.setValueAt(textTong.getText(), i, 6);
 
             if (diemTong < 5) {
                 xepLoai = "Rớt";
@@ -759,7 +731,7 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
             }
             model.setValueAt(xepLoai, i, 7);
 
-            //updateDiem(maMH, mssv);
+            updateDiem(maMH, mssv);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -772,12 +744,14 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
         String diemGK = md.getValueAt(index, 3).toString();
         String diemCK = md.getValueAt(index, 4).toString();
         String diemKhac = md.getValueAt(index, 5).toString();
-
+        String diemTong = md.getValueAt(index, 6).toString();
+        
         textMSSV.setText(mssv);
         textName.setText(hoTen);
         textGK.setText(diemGK);
         textCK.setText(diemCK);
         textKhac.setText(diemKhac);
+        textTong.setText(diemTong);
     }//GEN-LAST:event_jsvTableDiemMouseClicked
 
     private void btnQLLHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLLHActionPerformed
@@ -819,19 +793,19 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
 
     private boolean kiemTraDiem() {
         boolean valid = false;
-        double diemGK = 0;
-        double diemCK = 0;
-        double diemKhac = 0;
-
-        if (textGK.getText().equals("") || textCK.getText().equals("") || textKhac.getText().equals("")) {
+        float diemGK = 0;
+        float diemCK = 0;
+        float diemKhac = 0;
+        float diemTong = 0;
+        if (textGK.getText().equals("") || textCK.getText().equals("") || textKhac.getText().equals("") || textTong.getText().equals("")) {
             valid = true;
             JOptionPane.showMessageDialog(null, "Thông tin không đủ", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             diemGK = Float.parseFloat(textGK.getText());
             diemCK = Float.parseFloat(textCK.getText());
             diemKhac = Float.parseFloat(textKhac.getText());
-
-            if ((diemGK > 10 || diemGK < 0) || (diemCK > 10 || diemCK < 0) || (diemKhac > 10 || diemKhac < 0)) {
+            diemTong = Float.parseFloat(textTong.getText());
+            if ((diemGK > 10 || diemGK < 0) || (diemCK > 10 || diemCK < 0) || (diemKhac > 10 || diemKhac < 0) || (diemTong > 10 || diemTong < 0)) {
                 valid = true;
                 JOptionPane.showMessageDialog(null, "Điểm không hợp lệ!!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
@@ -854,12 +828,13 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
             cbLop_MonHoc.setModel(new javax.swing.DefaultComboBoxModel(new String[]{}));
         }
     }
-          private void addDataForTableMonHoc(){
-                
-        String select =  cbLop_MonHoc.getSelectedItem().toString();
+
+    private void addDataForTableMonHoc() {
+
+        String select = cbLop_MonHoc.getSelectedItem().toString();
         System.out.printf("Lop: " + select);
-        List<SinhVien> listSVMH =Lop_MonHocDAO.getListSinhVien(select);
-        if (listSVMH.size()>0) {
+        List<SinhVien> listSVMH = Lop_MonHocDAO.getListSinhVien(select);
+        if (listSVMH.size() > 0) {
             DefaultTableModel tableModel = new DefaultTableModel();
             tableModel.setColumnIdentifiers(columName);
             int stt = 1;
@@ -868,7 +843,7 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
                 rows[0] = String.valueOf(stt);
                 rows[1] = i.getMSSV();
                 rows[2] = i.getHoTen();
-                 System.out.printf(rows[2]);
+                System.out.printf(rows[2]);
                 if (i.getGioiTinh() == 0) {
                     rows[3] = "Nam";
                 } else {
@@ -888,85 +863,152 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
             jsvTable.setModel(tableModel);
         }
 
-            }
-          
-          
+    }
 
-        //  }
-        //  private void updateDiem(String lop, String mssv){
-        //        boolean checked = kiemTraDiem();
-        //        if (!checked) {
-        //            
-        //            Lop_MonHoc l_mh = th.getLopMH(lop);
-        //            Diem diem = l_mh.getDiemSV(mssv);
-        //            DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        //            
-        //            float diemGK = Float.parseFloat(textGK.getText());
-        //            float diemCK = Float.parseFloat(textCK.getText());
-        //            float diemKhac = Float.parseFloat(textKhac.getText());
-        //            float diemTong = (diemGK + diemCK + diemKhac)/3;
-        //            
-        //            diem.setDiemGK(Float.valueOf(decimalFormat.format(diemGK)));
-        //            diem.setDiemCK(Float.valueOf(decimalFormat.format(diemCK)));
-        //            diem.setDiemKhac(Float.valueOf(decimalFormat.format(diemKhac)));
-        //            diem.setDiemTong(Float.valueOf(decimalFormat.format(diemTong)));
-        //
-        //            l_mh.setDiem(diem, mssv);            
-        //            th.setLopMH(lop, l_mh);
-        //            
-        //            JOptionPane.showMessageDialog(null, "!!! Cập Nhật Thành Công");
-        //            
-        //            textMSSV.setText("");
-        //            textName.setText("");
-        //            textGK.setText("");
-        //            textCK.setText("");
-        //            textKhac.setText("");
-        //            
-        //            float tileDau = Float.valueOf(decimalFormat.format(l_mh.tiLeDau()));
-        //            float tileRot = Float.valueOf(decimalFormat.format(l_mh.tiLeRot()));
-        //            textSLPass.setText(String.valueOf(decimalFormat.format(l_mh.tongDau())));
-        //            textTLPass.setText(String.valueOf(tileDau));
-        //            textSLFail.setText(String.valueOf(l_mh.tongRot()));
-        //            textTLFail.setText(String.valueOf(tileRot));
-        //        }
-        //    }
-             private void readFileScore(File file) {
-                try {
-                   try( FileInputStream fileInPutStream = new FileInputStream(file)){
-                    Reader reader = new java.io.InputStreamReader(fileInPutStream, "utf8");
-                    BufferedReader buffer = new BufferedReader(reader);
-        
-                    String line;
-                    line = buffer.readLine();
-                    String [] valueComboBox = line.split(",");
-                    Lop_MonHoc lop_MonHoc = Lop_MonHocDAO.getLopMH(valueComboBox[0]);
-                    
-                    ArrayList<Diem> listDiem = lop_MonHoc.getListDiem();
-                    listDiem.clear();
-                    
-                    while((line = buffer.readLine()) != null){
-                        String[] diem = line.split(",");
-                         
-                        Diem diemSV = new Diem();
-                        SinhVien s = new SinhVien(diem[0], diem[1]);
-                        diemSV.setSV(s);                
-                        diemSV.setDiemGK(Float.parseFloat(diem[2]));
-                        diemSV.setDiemCK(Float.parseFloat(diem[3]));
-                        diemSV.setDiemKhac(Float.parseFloat(diem[4]));
-                        diemSV.setDiemTong(Float.parseFloat(diem[5]));
-                        listDiem.add(diemSV);
-                    }
-                    lop_MonHoc.setListDiemSV(listDiem);
-                    th.setLopMH(valueComboBox[0], lop_MonHoc);
-                    buffer.close();
-                    initLayout();
+    private void addDataForTableDiem() {
+        jsvTableDiem.setRowSelectionAllowed(true);
+        jsvTableDiem.setEnabled(true);
+
+        DefaultTableModel table = new DefaultTableModel();
+        String select = cbLop_MonHoc.getSelectedItem().toString();
+        table.setColumnIdentifiers(columnNameDiem);
+
+        List<Diem> listDiem = DiemDAO.getListDiem(select);
+        System.out.printf("\n");
+        // System.out.printf(valueComboBox + "VALUE");
+        System.out.printf("\n");
+        int stt = 1;
+        if (!listDiem.isEmpty()) {
+            for (Diem item : listDiem) {
+                String[] rows = new String[8];
+                rows[0] = String.valueOf(stt);
+                rows[1] = item.getMSSV();
+                System.out.printf("\n");
+                System.out.printf(rows[1]);
+                SinhVien sv = SinhVienDAO.layThongTinSinhVien(item.getMSSV());
+                if (sv != null) {
+                    System.out.printf(sv.getHoTen().toString());
+                    rows[2] = sv.getHoTen();
                 }
+                rows[3] = String.valueOf(item.getDiemGK());
+                rows[4] = String.valueOf(item.getDiemCK());
+                rows[5] = String.valueOf(item.getDiemKhac());
+                rows[6] = String.valueOf(item.getDiemTong());
+
+                if (item.kiemTraDau()) {
+                    rows[7] = "Đậu";
+                } else {
+                    rows[7] = "Rớt";
                 }
-                catch(Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error to export file: " + e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
-                }        
+                table.addRow(rows);
+                stt++;
             }
-    
+            jsvTableDiem.setModel(table);
+            jsvTableDiem.setVisible(true);
+            panelUpdate.setVisible(true);
+            panelThongKe.setVisible(true);
+
+            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+            List listThongKe = ThongKe(listDiem);
+            textSLPass.setText(String.valueOf(listThongKe.get(0)));
+            textTLPass.setText(String.valueOf(Float.valueOf(decimalFormat.format(listThongKe.get(1)))));
+            textSLFail.setText(String.valueOf(listThongKe.get(2)));
+            textTLFail.setText(String.valueOf(Float.valueOf(decimalFormat.format(listThongKe.get(3)))));
+        } else {
+            jsvTableDiem.setModel(table);
+            panelUpdate.setVisible(false);
+            panelThongKe.setVisible(false);
+            JOptionPane.showMessageDialog(null, "!!! Chưa Có Bảng Điểm");
+        }
+    }
+
+    private ArrayList<Float> ThongKe(List<Diem> listDiem) {
+        ArrayList<Float> listThongKe = new ArrayList<Float>();
+        float tongDau = 0;
+        float tongRot = 0;
+        float tileDau = 0;
+        float tileRot = 0;
+        if (listDiem.size() > 0) {
+            for (Diem tbScore : listDiem) {
+                if (tbScore.kiemTraDau()) {
+                    tongDau += 1;
+                } else {
+                    tongRot += 1;
+                }
+            }
+        }
+        tileDau = (tongDau * 100) / listDiem.size();
+        tileRot = (tongRot * 100) / listDiem.size();
+
+        listThongKe.add(tongDau);
+        listThongKe.add(tileDau);
+        listThongKe.add(tongRot);
+        listThongKe.add(tileRot);
+
+        return listThongKe;
+    }
+
+      private void updateDiem(String lop, String mssv){
+            boolean checked = kiemTraDiem();
+            if (!checked) {
+                
+                DecimalFormat decimalFormat = new DecimalFormat("#.##");
+                
+                float diemGK = Float.parseFloat(textGK.getText());
+                float diemCK = Float.parseFloat(textCK.getText());
+                float diemKhac = Float.parseFloat(textKhac.getText());
+                float diemTong =Float.parseFloat(textTong.getText());
+                Diem diemOld = DiemDAO.getDiem(lop, mssv);
+                Diem d = new Diem(diemOld.getId(),mssv,lop,diemGK,diemCK,diemKhac,diemTong);
+               
+               if(DiemDAO.updateDiem(d)){
+                JOptionPane.showMessageDialog(null, "!!! Cập Nhật Thành Công");
+                textMSSV.setText("");
+                textName.setText("");
+                textGK.setText("");
+                textCK.setText("");
+                textKhac.setText("");
+                textTong.setText("");
+                addDataForTableDiem();
+            }
+        }
+      }
+//             private void readFileScore(File file) {
+//                try {
+//                   try( FileInputStream fileInPutStream = new FileInputStream(file)){
+//                    Reader reader = new java.io.InputStreamReader(fileInPutStream, "utf8");
+//                    BufferedReader buffer = new BufferedReader(reader);
+//        
+//                    String line;
+//                    line = buffer.readLine();
+//                    String [] valueComboBox = line.split(",");
+//                    Lop_MonHoc lop_MonHoc = Lop_MonHocDAO.getLopMH(valueComboBox[0]);
+//                    
+//                    ArrayList<Diem> listDiem = lop_MonHoc.getListDiem();
+//                    listDiem.clear();
+//                    
+//                    while((line = buffer.readLine()) != null){
+//                        String[] diem = line.split(",");
+//                         
+//                        Diem diemSV = new Diem();
+//                        SinhVien s = new SinhVien(diem[0], diem[1]);
+//                        diemSV.setSV(s);                
+//                        diemSV.setDiemGK(Float.parseFloat(diem[2]));
+//                        diemSV.setDiemCK(Float.parseFloat(diem[3]));
+//                        diemSV.setDiemKhac(Float.parseFloat(diem[4]));
+//                        diemSV.setDiemTong(Float.parseFloat(diem[5]));
+//                        listDiem.add(diemSV);
+//                    }
+//                    lop_MonHoc.setListDiemSV(listDiem);
+//                    th.setLopMH(valueComboBox[0], lop_MonHoc);
+//                    buffer.close();
+//                    initLayout();
+//                }
+//                }
+//                catch(Exception e) {
+//                    JOptionPane.showMessageDialog(null, "Error to export file: " + e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+//                }        
+//            }
     private String getClassNameInComboBox() {
         String result = cbLop_MonHoc.getSelectedItem().toString();
         return result;
@@ -1024,6 +1066,7 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1057,5 +1100,6 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
     private javax.swing.JTextField textSLPass;
     private javax.swing.JTextField textTLFail;
     private javax.swing.JTextField textTLPass;
+    private javax.swing.JTextField textTong;
     // End of variables declaration//GEN-END:variables
 }

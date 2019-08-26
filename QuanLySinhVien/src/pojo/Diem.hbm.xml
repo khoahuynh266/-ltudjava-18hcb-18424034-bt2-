@@ -40,28 +40,29 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-mapping>
- <class name="pojo.Diem" table="diem" catalog="quanlysinhvien" optimistic-lock="version">
+    <class name="pojo.Diem" table="diem" catalog="quanlysinhvien" optimistic-lock="version">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="identity" />
         </id>
-        <property name="tenLopMonHoc" type="String">
-            <column name="TenLopMonHoc" length="10" not-null="true" />
+         <property name="MSSV" type="string">
+            <column name="MSSV" length="45" />
         </property>
-        
+        <property name="tenLopMonHoc" type="string">
+            <column name="TenLopMonHoc" length="45" />
+        </property>
         <property name="diemGK" type="java.lang.Float">
             <column name="DiemGK" precision="22" scale="0" />
         </property>
         <property name="diemCK" type="java.lang.Float">
             <column name="DiemCK" precision="22" scale="0" />
         </property>
-            <property name="diemKhac" type="java.lang.Float">
+        <property name="diemKhac" type="java.lang.Float">
             <column name="DiemKhac" precision="22" scale="0" />
         </property>
-        <property name="tongDiem" type="java.lang.Float">
-            <column name="TongDiem" precision="22" scale="0" />
+        <property name="diemTong" type="java.lang.Float">
+            <column name="DiemTong" precision="22" scale="0" />
         </property>
-        <many-to-one class="pojo.Sinh" name="student" fetch="select" lazy="false">
-            <column length="10" name="MaSinhVien" not-null="true"></column>
-        </many-to-one>
+       
+            </class>
 </hibernate-mapping>

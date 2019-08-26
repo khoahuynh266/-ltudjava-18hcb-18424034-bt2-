@@ -11,6 +11,7 @@ import dao.SinhVienDAO;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import pojo.LopHoc;
 import pojo.Lop_MonHoc;
 import pojo.SinhVien;
@@ -233,7 +234,13 @@ public class themSinhVienMonHoc extends javax.swing.JFrame {
         // TODO add your handling code here: String mssv = textMSSV.getText();
        String mssv = jcbMSSV.getSelectedItem().toString();
         Lop_MonHoc l = new Lop_MonHoc(tenLopHoc,mssv);
-        Lop_MonHocDAO.addSinhVien(l);
+       if( Lop_MonHocDAO.addSinhVien(l))
+       {
+            JOptionPane.showMessageDialog(null, "Thêm Sinh Viên Thành Công :)");
+       }
+       else {
+           JOptionPane.showMessageDialog(null, "Thêm Sinh Viên Thất Bại");
+       }
     }//GEN-LAST:event_jbtnThemActionPerformed
 
     private void jbtnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnThoatActionPerformed

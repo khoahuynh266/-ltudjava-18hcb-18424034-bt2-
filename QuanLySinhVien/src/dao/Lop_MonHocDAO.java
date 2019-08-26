@@ -55,6 +55,30 @@ public class Lop_MonHocDAO {
         
         return listSinhVien;
     }
+    public static Lop_MonHoc getLop_MonHoc(String tenLopMH, String maSinhVien) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Lop_MonHoc> result = null;
+
+        try {
+            String hql = "select d";
+            hql += " from Lop_MonHoc d";
+            hql += " where d.tenLopMH=:tenLopMH and d.maSinhVien=:maSinhVien";
+            Query query = session.createQuery(hql);
+            query.setParameter("tenLopMH", tenLopMH);
+            query.setParameter("maSinhVien", maSinhVien);
+            result = query.list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+
+        if(result.size() > 0) {
+            return result.get(0);
+        }
+        
+        return null;
+    }
      public static Lop_MonHoc getSinhVien(Lop_MonHoc lmh) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Lop_MonHoc lop_MonHoc = null;
@@ -101,17 +125,15 @@ public class Lop_MonHocDAO {
         
         return true;
     }
-    
+   
     public static boolean deleteSinhVien(Lop_MonHoc lop_MonHoc) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        if(Lop_MonHocDAO.getSinhVien(lop_MonHoc) == null) {
-            return false;
-        }
         Transaction transaction = null;
         try{
             transaction = session.beginTransaction();
             session.delete(lop_MonHoc);
-            transaction.commit();;
+            transaction.commit();
+            System.out.printf("xoa sv ok");
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {

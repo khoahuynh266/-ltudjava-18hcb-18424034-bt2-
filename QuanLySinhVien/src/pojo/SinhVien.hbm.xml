@@ -20,6 +20,6 @@
         <many-to-one class="pojo.LopHoc" name="lopHoc" fetch="select">
             <column length="10" name="TenLop" not-null="true"></column>
         </many-to-one>
-
+        
    </class> 
 </hibernate-mapping>
