@@ -6,7 +6,6 @@
 package quanlysinhvien;
 
 import dao.DiemDAO;
-import dao.LopHocDAO;
 import dao.Lop_MonHocDAO;
 import dao.SinhVienDAO;
 import dao.ThoiKhoaBieuDAO;
@@ -23,8 +22,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import pojo.Diem;
-import pojo.LopHoc;
-import pojo.Lop_MonHoc;
 import pojo.SinhVien;
 import pojo.ThoiKhoaBieu;
 //import static quanlysinhvien.GiaoVu.th;
@@ -105,7 +102,6 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jbtnImportDiem = new javax.swing.JButton();
-        jbtnXemBangDiem = new javax.swing.JButton();
         panelUpdate = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -436,41 +432,25 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
             }
         });
 
-        jbtnXemBangDiem.setText("Xem bảng điểm");
-        jbtnXemBangDiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnXemBangDiemActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jbtnXemBangDiem)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(13, 13, 13))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jbtnImportDiem)
-                                .addGap(29, 29, 29))))))
+                        .addGap(10, 10, 10)
+                        .addComponent(jbtnImportDiem))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbtnImportDiem)
-                .addGap(18, 18, 18)
-                .addComponent(jbtnXemBangDiem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -601,11 +581,13 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 159, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -689,11 +671,6 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
         // TODO add your handling code here:
         importExportFile("Choose file import", IMPORT_FILE_SCORE);
     }//GEN-LAST:event_jbtnImportDiemActionPerformed
-
-    private void jbtnXemBangDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnXemBangDiemActionPerformed
-        // TODO add your handling code here:
-        addDataForTableDiem();
-    }//GEN-LAST:event_jbtnXemBangDiemActionPerformed
 
 
     private void textSLPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSLPassActionPerformed
@@ -785,7 +762,7 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
                     // readFile(f);
                     break;
                 case IMPORT_FILE_SCORE:
-                    //readFileScore(f);
+                    readFileScore(f);
                     break;
             }
         }
@@ -973,42 +950,36 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
             }
         }
       }
-//             private void readFileScore(File file) {
-//                try {
-//                   try( FileInputStream fileInPutStream = new FileInputStream(file)){
-//                    Reader reader = new java.io.InputStreamReader(fileInPutStream, "utf8");
-//                    BufferedReader buffer = new BufferedReader(reader);
-//        
-//                    String line;
-//                    line = buffer.readLine();
-//                    String [] valueComboBox = line.split(",");
-//                    Lop_MonHoc lop_MonHoc = Lop_MonHocDAO.getLopMH(valueComboBox[0]);
-//                    
-//                    ArrayList<Diem> listDiem = lop_MonHoc.getListDiem();
-//                    listDiem.clear();
-//                    
-//                    while((line = buffer.readLine()) != null){
-//                        String[] diem = line.split(",");
-//                         
-//                        Diem diemSV = new Diem();
-//                        SinhVien s = new SinhVien(diem[0], diem[1]);
-//                        diemSV.setSV(s);                
-//                        diemSV.setDiemGK(Float.parseFloat(diem[2]));
-//                        diemSV.setDiemCK(Float.parseFloat(diem[3]));
-//                        diemSV.setDiemKhac(Float.parseFloat(diem[4]));
-//                        diemSV.setDiemTong(Float.parseFloat(diem[5]));
-//                        listDiem.add(diemSV);
-//                    }
-//                    lop_MonHoc.setListDiemSV(listDiem);
-//                    th.setLopMH(valueComboBox[0], lop_MonHoc);
-//                    buffer.close();
-//                    initLayout();
-//                }
-//                }
-//                catch(Exception e) {
-//                    JOptionPane.showMessageDialog(null, "Error to export file: " + e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
-//                }        
-//            }
+             private void readFileScore(File file) {
+                try {
+                   try( FileInputStream fileInPutStream = new FileInputStream(file)){
+                    Reader reader = new java.io.InputStreamReader(fileInPutStream, "utf8");
+                    BufferedReader buffer = new BufferedReader(reader);
+        
+                    String line;
+                    line = buffer.readLine();
+                    String [] tenLopMH = line.split(",");
+                    System.out.printf(tenLopMH[0]);
+                    while((line = buffer.readLine()) != null){
+                        String[] diem = line.split(",");
+                        Diem diemSV = new Diem();
+                       
+                        diemSV.setTenLopMonHoc(tenLopMH[0]);
+                        diemSV.setMSSV(diem[0]); 
+                        diemSV.setDiemGK(Float.parseFloat(diem[2]));
+                        diemSV.setDiemCK(Float.parseFloat(diem[3]));
+                        diemSV.setDiemKhac(Float.parseFloat(diem[4]));
+                        diemSV.setDiemTong(Float.parseFloat(diem[5]));
+                        DiemDAO.addDiem(diemSV);
+                    }
+                    buffer.close();
+                    initLayout();
+                }
+                }
+                catch(Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error to export file: " + e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+                }        
+            }
     private String getClassNameInComboBox() {
         String result = cbLop_MonHoc.getSelectedItem().toString();
         return result;
@@ -1084,7 +1055,6 @@ public class QuanLyMonHoc extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbtnImportDiem;
     private javax.swing.JButton jbtnThoat;
-    private javax.swing.JButton jbtnXemBangDiem;
     private javax.swing.JButton jbtnXoaSV;
     private javax.swing.JTable jsvTable;
     private javax.swing.JTable jsvTableDiem;

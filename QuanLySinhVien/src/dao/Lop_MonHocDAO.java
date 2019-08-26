@@ -141,4 +141,24 @@ public class Lop_MonHocDAO {
         }
         return true;
     }
+    
+     public static List<Lop_MonHoc> getListLop_MonHoc(String maSinhVien) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Lop_MonHoc> listLop_MonHoc = null;
+        try {
+            String hql = "select lop_MonHoc";
+            hql += " from Lop_MonHoc lop_MonHoc";
+            hql += " where lop_MonHoc.maSinhVien=:maSinhVien";
+            Query query = session.createQuery(hql);
+            query.setParameter("maSinhVien", maSinhVien);
+            listLop_MonHoc =  query.list();
+            System.out.printf("get list ok");
+        } catch(HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        
+        return listLop_MonHoc;
+    }
 }

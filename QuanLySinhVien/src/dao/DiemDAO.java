@@ -19,10 +19,11 @@ import ulti.HibernateUtil;
  * @author yumil
  */
 public class DiemDAO {
-     public static Diem getDiem(String tenLopMonHoc, String MSSV) {
+
+    // list diem theo mon + mssv
+    public static Diem getDiem(String tenLopMonHoc, String MSSV) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<Diem> result = null;
-
         try {
             String hql = "select d";
             hql += " from Diem d";
@@ -37,36 +38,55 @@ public class DiemDAO {
             session.close();
         }
 
-        if(result.size() > 0) {
+        if (result.size() > 0) {
             return result.get(0);
         }
-        
+
         return null;
     }
 
-     public static List<Diem> getListDiem(String tenLopMonHoc) {
+    public static List<Diem> getListDiem(String tenLopMonHoc, String MSSV) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Diem> result = null;
+        try {
+            String hql = "select d";
+            hql += " from Diem d";
+            hql += " where d.tenLopMonHoc=:tenLopMonHoc and d.MSSV=:MSSV";
+            Query query = session.createQuery(hql);
+            query.setParameter("tenLopMonHoc", tenLopMonHoc);
+            query.setParameter("MSSV", MSSV);
+            result = query.list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return result;
+    }
+
+    // list diem theo mon 
+    public static List<Diem> getListDiem(String tenLopMonHoc) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<Diem> listDiem = null;
-        
+
         try {
             String hql = "select d";
             hql += " from Diem d";
             hql += " where d.tenLopMonHoc=:tenLopMonHoc";
             Query query = session.createQuery(hql);
             query.setParameter("tenLopMonHoc", tenLopMonHoc);
-            listDiem =  query.list();
+            listDiem = query.list();
             System.out.printf("get list ok");
-        } catch(HibernateException ex) {
+        } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {
             session.close();
         }
-        
+
         return listDiem;
     }
-    
 
-    public static boolean createDiem(Diem d) {
+    public static boolean addDiem(Diem d) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Transaction transaction = null;
@@ -85,8 +105,8 @@ public class DiemDAO {
 
     public static boolean updateDiem(Diem d) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        System.out.print(d.getMSSV()+ "" + d.getTenLopMonHoc());
-                Transaction transaction = null;
+        System.out.print(d.getMSSV() + "" + d.getTenLopMonHoc());
+        Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
             session.update(d);
@@ -101,4 +121,3 @@ public class DiemDAO {
         return true;
     }
 }
- 

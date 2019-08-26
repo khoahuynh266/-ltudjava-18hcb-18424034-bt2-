@@ -15,7 +15,6 @@ import static quanlysinhvien.Login.taiKhoan;
  * @author yumil
  */
 public class GiaoVu extends javax.swing.JFrame {
- static TruongHoc th = new TruongHoc();
      Login login;
     /**
      * Creates new form GiaoVu
@@ -28,6 +27,7 @@ public class GiaoVu extends javax.swing.JFrame {
         this.login = aThis;
         initComponents();
         this.login.setVisible(false);  
+        panelDoiMK.setVisible(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.

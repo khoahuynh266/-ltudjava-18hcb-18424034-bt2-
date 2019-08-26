@@ -17,7 +17,7 @@ import pojo.*;
 public class Login extends javax.swing.JFrame {
 
     static TaiKhoan taiKhoan = new TaiKhoan();
-
+    String tenTaiKhoan;
     /**
      * Creates new form Login
      */
@@ -149,7 +149,8 @@ public class Login extends javax.swing.JFrame {
 
             if (taiKhoan.getPer() == 0) {
                 JOptionPane.showMessageDialog(null, "Sinh vien login thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
-
+                SinhVien_Diem sv = new SinhVien_Diem(taiKhoan);
+                sv.setVisible(true);
             }
         }
 
@@ -168,7 +169,6 @@ public class Login extends javax.swing.JFrame {
         }
         if (check == false) {
             TaiKhoan a = TaiKhoanDAO.getTaiKhoan(tenTaiKhoan);
-            System.out.print(tenTaiKhoan);
             if (a.getTenTaiKhoan().equals(tenTaiKhoan) && a.getMatKhau().equals(matKhau)) {
                 taiKhoan = a;
                 check = false;

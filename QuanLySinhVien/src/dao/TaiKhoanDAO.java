@@ -55,9 +55,6 @@ public class TaiKhoanDAO {
     }
      public static boolean themTaiKhoan(TaiKhoan a) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        if(TaiKhoanDAO.getTaiKhoan(a.getTenTaiKhoan()) == null) {
-            return false;
-        }
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
