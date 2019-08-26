@@ -18,5 +18,7 @@
     <mapping resource="pojo/ThoiKhoaBieu.hbm.xml"/>
     <mapping resource="pojo/Lop_MonHoc.hbm.xml"/>
     <mapping resource="pojo/Diem.hbm.xml"/>
+    <mapping resource="pojo/PhucKhao.hbm.xml"/>
+    <mapping resource="pojo/BangPhucKhao.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

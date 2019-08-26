@@ -53,6 +53,7 @@ public class GiaoVu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jBtnQLTKB = new javax.swing.JButton();
         jBtnQLLH = new javax.swing.JButton();
+        jBtnPhucKhao = new javax.swing.JButton();
         jBtnMonHoc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -167,6 +168,14 @@ public class GiaoVu extends javax.swing.JFrame {
             }
         });
 
+        jBtnPhucKhao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBtnPhucKhao.setText("Quản Lý Phúc Khảo");
+        jBtnPhucKhao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnPhucKhaoActionPerformed(evt);
+            }
+        });
+
         jBtnMonHoc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtnMonHoc.setText("DS Lớp theo Môn");
         jBtnMonHoc.addActionListener(new java.awt.event.ActionListener() {
@@ -179,12 +188,13 @@ public class GiaoVu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jBtnMonHoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtnQLTKB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtnQLLH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE))
+                    .addComponent(jBtnPhucKhao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnQLTKB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnQLLH, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
@@ -196,7 +206,9 @@ public class GiaoVu extends javax.swing.JFrame {
                 .addComponent(jBtnQLLH, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtnMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBtnPhucKhao, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,12 +229,11 @@ public class GiaoVu extends javax.swing.JFrame {
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jBtnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 9, Short.MAX_VALUE)
+                            .addComponent(jbtnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(panelDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,10 +248,10 @@ public class GiaoVu extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, 6)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addComponent(panelDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -258,11 +269,11 @@ public class GiaoVu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jBtnQLTKBActionPerformed
 
-    private void jBtnMonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMonHocActionPerformed
+    private void jBtnPhucKhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPhucKhaoActionPerformed
         // TODO add your handling code here:
-       new QuanLyMonHoc().setVisible(true);
+       new QuanLyPhucKhao().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jBtnMonHocActionPerformed
+    }//GEN-LAST:event_jBtnPhucKhaoActionPerformed
 
       private boolean kiemTraDoiMK(){
         boolean flag = false;
@@ -314,6 +325,12 @@ public class GiaoVu extends javax.swing.JFrame {
            panelDoiMK.setVisible(true);
     }//GEN-LAST:event_jbtnDoiMKActionPerformed
 
+    private void jBtnMonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMonHocActionPerformed
+        // TODO add your handling code here:
+         new QuanLyMonHoc().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBtnMonHocActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -353,6 +370,7 @@ public class GiaoVu extends javax.swing.JFrame {
     private javax.swing.JButton btnSaveNewPass;
     private javax.swing.JButton jBtnDangXuat;
     private javax.swing.JButton jBtnMonHoc;
+    private javax.swing.JButton jBtnPhucKhao;
     private javax.swing.JButton jBtnQLLH;
     private javax.swing.JButton jBtnQLTKB;
     private javax.swing.JLabel jLabel1;
