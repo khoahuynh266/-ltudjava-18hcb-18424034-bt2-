@@ -29,6 +29,7 @@ public class SinhVien_Diem extends javax.swing.JFrame {
     /**
      * Creates new form SinhVien_Diem
      */
+    String mssv ;
     public SinhVien_Diem() {
         initComponents();
         initLayout();
@@ -36,6 +37,7 @@ public class SinhVien_Diem extends javax.swing.JFrame {
  public SinhVien_Diem(TaiKhoan taiKhoan) {
         initComponents();
         initLayout();
+        mssv = taiKhoan.getTenTaiKhoan();
     }
 
     /**
@@ -58,7 +60,7 @@ public class SinhVien_Diem extends javax.swing.JFrame {
         btnLuu = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         textMKMoi = new javax.swing.JTextField();
-        jCbBoxMonHoc = new javax.swing.JComboBox<String>();
+        jCbBoxMonHoc = new javax.swing.JComboBox<>();
         btnChangePass1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -66,6 +68,7 @@ public class SinhVien_Diem extends javax.swing.JFrame {
         jsvTableDiem = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         notifyDSDiem = new javax.swing.JLabel();
+        btnPhucKhao = new javax.swing.JButton();
         jTextMSSV = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -207,6 +210,15 @@ public class SinhVien_Diem extends javax.swing.JFrame {
         notifyDSDiem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         notifyDSDiem.setText("notify");
 
+        btnPhucKhao.setBackground(new java.awt.Color(204, 204, 204));
+        btnPhucKhao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnPhucKhao.setText("Phúc khảo");
+        btnPhucKhao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPhucKhaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -214,13 +226,15 @@ public class SinhVien_Diem extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(notifyDSDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPhucKhao)
+                        .addGap(132, 132, 132))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,7 +242,8 @@ public class SinhVien_Diem extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(notifyDSDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(notifyDSDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPhucKhao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                 .addGap(27, 27, 27))
@@ -433,6 +448,12 @@ public class SinhVien_Diem extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextMSSVActionPerformed
 
+    private void btnPhucKhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhucKhaoActionPerformed
+        // TODO add your handling code here:
+         String select = jCbBoxMonHoc.getSelectedItem().toString();
+        new FromSV_PhucKhao(mssv).setVisible(true);
+    }//GEN-LAST:event_btnPhucKhaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -473,6 +494,7 @@ public class SinhVien_Diem extends javax.swing.JFrame {
     private javax.swing.JButton btnChangePass1;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnLuu;
+    private javax.swing.JButton btnPhucKhao;
     private javax.swing.JComboBox<String> jCbBoxMonHoc;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
